@@ -1,0 +1,8 @@
+/*---- responsive home styles ----*/
+
+/*-- for mobile --*/
+@media screen (min-width: 600px){
+	.layout-grid{
+		grid-template-columns: 0 1fr;
+	}
+}

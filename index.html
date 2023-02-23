@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" 
+	content="width=device-width, initial-scale=1.0">
+	<title>TMBD</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<script src="./script.js" async="true" defer="true"></script>
+</head>
+<body class="layout-grid">
+
+	<!-- -- side bar -- -->
+	<aside>
+		<h3>TMDB</h3>
+		<hr>
+		<li class="menu-links">
+			<i class="fa fa-house"></i>
+			<a href="">home</a>
+		</li>
+		<li class="menu-links">
+			<i class="fa fa-film"></i>
+			<a href="">movies</a>
+		</li>
+		<li class="menu-links">
+			<i class="fa fa-tv"></i>
+			<a href="">Tv</a>
+		</li>
+		<li class="menu-links">
+			<i class="fa fa-eye"></i>
+			<a href="">Watch list</a>
+		</li>
+	</aside>
+
+	<!-- -- main content -- -->
+	<main>
+		<div class="content">
+			<header>
+				<!-- search bar  -->
+				<nav>
+					<div class="search-wrapper">
+						<input type="search" placeholder="search">
+						<i id="search-icon" class="fa fa-search"></i>
+					</div>
+				</nav>
+				<div class="banner-wrapper">
+					<a class="banner loader" href="#">
+						<div class="banner-desc">
+							loading . . .
+						</div>
+					</a>
+				</div>
+			</header>
+
+			<!-- movies section popular-->
+			<section class="movies popular">
+				<div class="desc"> <h3>Popular Movies</h3> </div>
+				<div class="horizontal-scroll-holder">
+					<div class="horizontal-slider loader">
+						<!-- <a class="img-wrapper" href="#" title="Spider man">
+							<img src="./img/poster.jpg" alt="">
+							<div class="movie-desc">
+								<p class="rating"><b>6.6</b></p>
+								<div class="info">
+									<h4>Spider Man</h4>
+									<p>Action, Romance</p>
+								</div>
+							</div>
+						</a> -->
+			    	</div>
+				</div>
+			</section>
+			<!-- movies section end -->
+
+			<!-- movies section trending-->
+			<section class="movies trending">
+				<div class="desc"> <h3>Trending Movies</h3> </div>
+				<div class="horizontal-scroll-holder">
+					<div class="horizontal-slider loader">
+						<!-- dyanmic generate html here -->
+			    	</div>
+				</div>
+			</section>
+			<!-- movies section end -->
+
+		</div>
+	</main>
+
+</body>
+<script>
+	// const params = new URLSearchParams(window.location.search)
+	// for(const param of params ) {console.log(param);}
+</script>
+</html>
