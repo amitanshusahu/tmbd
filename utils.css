@@ -67,9 +67,9 @@ input[type="search"]:focus{
 .flex{
 	display: flex;
 }
-/*.loader{
+.loader{
 	animation: load 0.5s linear infinite alternate;
-}*/
+}
 @keyframes load{
 	to{background-color: rgba(100, 100, 100, 0.1);}
 	from{background-color: rgba(1, 1, 1, 0.3);}
