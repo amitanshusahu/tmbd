@@ -36,6 +36,9 @@ aside .menu-links{
 aside .menu-links:hover{
 	opacity: 1;
 }
+aside .menu-links[active]{
+	opacity: 1;
+}
 aside .menu-links i{
 	color: inherit;
 	font-size: 20px;
@@ -51,6 +54,17 @@ main{
 	overflow-x: hidden;
 	overflow-y: scroll;
 	background-color: rgba(1,1,1,0.2);
+}
+main::-webkit-scrollbar-thumb{
+	background-color: rgba(200,200,200,0.5);
+	outline: 1px solid slategrey;
+	border-radius: 5px;
+}
+main::-webkit-scrollbar{
+	width: 5px;
+}
+main::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(200, 200, 200, 0.3);
 }
 main .content{
 	display: flex;
@@ -122,10 +136,17 @@ section .horizontal-scroll-holder{
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
-.horizontal-scroll-holder::-webkit-scrollbar,
-.horizontal-scroll-holder::-webkit-scrollbar-thumb,
-.horizontal-scroll-holder::-webkit-scrollbar-button{
-    display: none;
+.horizontal-scroll-holder::-webkit-scrollbar-thumb{
+	background-color: rgba(200,200,200,0.5);
+	opacity: 0.7;
+/*	outline: 1px solid slategrey;*/
+	border-radius: 5px;
+}
+.horizontal-scroll-holder::-webkit-scrollbar{
+	height: 5px;
+}
+.horizontal-scroll-holder::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 4px rgba(200, 200, 200, 0.3);
 }
 .movies .horizontal-slider{
 	display: flex;
@@ -142,29 +163,39 @@ section .horizontal-scroll-holder{
 	overflow: hidden;
 	aspect-ratio: 3.3/5;
 	border-radius: 1em;
-	scroll-snap-align: start;
+	scroll-snap-align: end;
+	margin-bottom: 20px;
+}
+.movies .img-wrapper:hover .movie-desc{
+	opacity:1;
 }
 .movies .img-wrapper .movie-desc{
 	padding: var(--layout-space-min);
 	position: absolute;
 	inset: 0;
-	background: linear-gradient(transparent, 70%, rgba(1, 1, 1, 0.8));
+	background: rgba(1, 1, 1, 0.7);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: left;
+	opacity: 0;
+	transition: 0.2s linear;
+}
+.movies .img-wrapper .movie-desc .info h4{
+	text-align: center;
+	margin-bottom: 10px;
 }
 .movies .img-wrapper .movie-desc .info p{
-	font-size: 10px;
-	color: rgb(150, 150, 150);
-/*	text-align: center;*/
+	font-size: 14px;
+	color: rgb(200, 200, 200);
+	text-align: center;
 }
 .movies .img-wrapper .movie-desc .rating{
 	text-align: right;
 }
 .movies .img-wrapper .movie-desc .rating b,
 .banner-wrapper .banner .banner-desc b{
-	background-color: rgba(1, 1, 1, 0.5);
+	background-color: rgba(150, 150, 150, 0.5);
 	width: fit-content;
 	padding: 5px;
 	border-radius: 5px;

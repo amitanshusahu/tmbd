@@ -44,15 +44,25 @@ https://api.themoviedb.org/3/movie/popular?api_key=<api_key>&language=en-US&page
 - Now Playing/ Recent
 https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=en-US&page=1
 
-+ Get Movies details
+++ Get Movies details
 https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 
-- Credits
+-- Credits
 https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
 
-- Similar
+-- Similar
 https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US
 
+=> GetTv
+
+- Get Latest
+https://api.themoviedb.org/3/tv/latest?api_key=<key>&language=en-US
+
+- Get Popular
+https://api.themoviedb.org/3/tv/popular?api_key=<key>&language=en-US&page=1
+
+- Get Top-Rated
+https://api.themoviedb.org/3/tv/top_rated?api_key=<key>&language=en-US&page=1
 
  */
 
@@ -75,14 +85,24 @@ const SORT_URL = BASE_URL + "/discover/movie?" + API_KEY + "&sort_by=";
 //? Get Images
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 
-//? Get Genres
-const GENRES_URL = BASE_URL +  "/genre/movie/list?" + API_KEY + "&language=en-US";
-
 //? Trending
 const TRENDING = BASE_URL + "/trending/all/day?adult=true&" + API_KEY;
 
 //? Movies
-const POPULAR = BASE_URL + "/movie/popular/?adult=true&" +  API_KEY;
+
+// Get Genres
+const GENRES_URL = BASE_URL +  "/genre/movie/list?" + API_KEY + "&language=en-US";
+
+// Popular movies
+const M_POPULAR = BASE_URL + "/movie/popular?adult=true&" +  API_KEY;
+
+//? Tv
+
+// Popular tv
+const T_POPULAR = BASE_URL + "/tv/popular?adult=true&" + API_KEY;
+
+// Latest tv
+const T_LATEST = BASE_URL + "/tv/latest?adult=true&" + API_KEY;
 
 
 // ------------------
@@ -95,6 +115,7 @@ const slideShow = document.querySelector(".banner-wrapper");
 const slide = slideShow.querySelector(".banner");
 const PopularMovieContainer = document.querySelector(".popular .horizontal-slider");
 const TrendingMovieContainer = document.querySelector(".trending .horizontal-slider");
+const PopularTvContainer = document.querySelector(".popular-tv .horizontal-slider");
 
 async function getJson(url) {
 
@@ -107,13 +128,17 @@ async function getJson(url) {
 window.onload = async () => {
 
     // Get Popular Movies
-    const popularRes = await getJson(POPULAR);
+    const popularRes = await getJson(M_POPULAR);
     showMoviesBackdrop(popularRes.results, slide);
     showMoviesCard(popularRes.results, PopularMovieContainer);
 
     // Get Trending Movies
     const trendingRes = await getJson(TRENDING);
     showMoviesCard(trendingRes.results, TrendingMovieContainer);
+
+    // Get Popular Tv shows
+    const popularTvRes = await getJson(T_POPULAR);
+    showMoviesCard(popularTvRes.results, PopularTvContainer);
 
 }
 
