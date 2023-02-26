@@ -1,0 +1,21 @@
+/*--- util css import ---*/
+@import url(./utils.css);
+@import url(./common.css);
+
+/*-- styles --*/
+body{
+	width: 100%;
+	height: fit-content;
+}
+h1{
+	text-align: center;
+	margin: 30px;
+}
+#resultBox{
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--layout-space-max);
+	width: 100%;
+	height: fit-content;
+	justify-content: center;
+}
