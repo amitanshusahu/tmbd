@@ -41,10 +41,10 @@ async function showMoviesBackdrop(data, ele) {
 
     //> set movie desc
     ele.innerHTML = `
-    <div class="banner-desc">
+    <a class="banner-desc" href="./details.html?${id}" target="_blank">
         <h1>${title ?? name}</h1>
         <p>${genres} <b>${vote_average.toFixed(1)}</b></p>
-    </div>`;
+    </a>`;
 
     //> stop loader
     disableLoader(ele);
@@ -54,6 +54,5 @@ async function showMoviesBackdrop(data, ele) {
 function search(){
     let search = document.querySelector("#search");
     const queryString = search.value;
-    // window.location.href = `./search.html?${queryString}`;
     window.open(`./search.html?${queryString}`, '_blank');
 }

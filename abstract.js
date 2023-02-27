@@ -85,16 +85,19 @@ const SORT_URL = BASE_URL + "/discover/movie?" + API_KEY + "&sort_by=";
 //? Get Images
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 
+//? Get Genres
+const GENRES_URL = BASE_URL +  "/genre/movie/list?" + API_KEY + "&language=en-US";
+
 //? Trending
 const TRENDING = BASE_URL + "/trending/all/day?adult=true&" + API_KEY;
 
 //? Movies
 
-// Get Genres
-const GENRES_URL = BASE_URL +  "/genre/movie/list?" + API_KEY + "&language=en-US";
-
 // Popular movies
 const M_POPULAR = BASE_URL + "/movie/popular?adult=true&" +  API_KEY;
+
+// get movies
+const M_GET = BASE_URL + "/movie/"
 
 //? Tv
 
@@ -131,7 +134,7 @@ function getImage(size, path) {
 }
 
 
-//? getGenres(arr|array)
+//? getGenres(arr|arrayofobj)
 async function getGenres(arr) {
 
     const res = await fetch(GENRES_URL);
@@ -155,8 +158,18 @@ async function getGenres(arr) {
 }
 
 
+//? getMovieDetail()
+async function getMovieDetails(id){
+    let url = M_GET + `${id}?` + API_KEY;
+    const res = await getJson(url);
+    return res;
+}
+
+
 //? disableLoader(ele|dom element);
-function disableLoader(ele){ele.classList.remove("loader")}
+function disableLoader(ele){
+    ele.classList.remove("loader");
+}
 
 
 //? showCard(data|array, ele|dom element)
@@ -169,7 +182,7 @@ async function showCards(data, ele) {
         const genres = await getGenres(genre_ids);
 
         ele.innerHTML += `
-        <a class="card-img-wrapper" href="" title="${title ?? name}">
+        <a class="card-img-wrapper" href="./details.html?${id}" target="_blank" title="${title ?? name}">
             <img src="${poster}" alt="${title ?? name}">
             <div class="movie-desc">
                 <p class="rating"><b>${vote_average.toFixed(1)}</b></p>
